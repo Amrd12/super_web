@@ -1,4 +1,6 @@
-﻿import { useState } from "react";
+﻿"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, Variants, AnimatePresence } from "framer-motion";
@@ -75,7 +77,8 @@ export default function HomePage() {
     <div className="relative min-h-screen w-full bg-gray-50 text-gray-900 font-sans">
       
       {/* 1. HERO PARALLAX SECTION */}
-      <section className="relative w-full h-screen bg-[url('/1.jpeg')] md:bg-[url('/header.jpeg')] bg-cover bg-center bg-no-repeat bg-fixed">
+      {/* FIX APPLIED HERE: h-[100dvh] and md:bg-fixed for perfect iPhone rendering */}
+      <section className="relative w-full h-[100dvh] bg-[url('/1.jpeg')] md:bg-[url('/header.jpeg')] bg-cover bg-center bg-no-repeat md:bg-fixed">
         
         {/* Floating Top Navigation */}
         <div className="absolute top-0 left-0 w-full p-4 md:p-8 z-50">
