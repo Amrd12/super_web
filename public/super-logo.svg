@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120" role="img" aria-labelledby="title desc">
+  <title id="title">S-UPER Secure Drive logo</title>
+  <desc id="desc">Orange and black logo shape with the letter S and brand name S-UPER Secure Drive.</desc>
+  <rect width="320" height="120" rx="30" fill="#FF8C00" />
+  <rect x="18" y="18" width="84" height="84" rx="22" fill="#000" />
+  <text x="60" y="78" text-anchor="middle" font-family="Inter, Helvetica, Arial, sans-serif" font-size="68" font-weight="800" fill="#FF8C00">S</text>
+  <text x="122" y="54" font-family="Inter, Helvetica, Arial, sans-serif" font-size="30" font-weight="800" fill="#000">S-UPER</text>
+  <text x="122" y="84" font-family="Inter, Helvetica, Arial, sans-serif" font-size="12" fill="#000" letter-spacing="0.2em">SECURE DRIVE</text>
+</svg>
