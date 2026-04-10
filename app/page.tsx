@@ -2,8 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import launcherLogo from "./launcher.png";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import {
   Route,
   ShieldCheck,
@@ -12,19 +11,25 @@ import {
   Headphones,
 } from "lucide-react";
 
+// --- TEXT CONTENT ---
 const aboutContent = {
-  section_about: "---------------- ABOUT ----------------",
+  section_about: "ABOUT",
   aboutUsTitle: "About Us",
   aboutIntro:
     "At S-UPER, we are committed to providing high-quality ride-sharing services to ensure that our users receive the best transportation in the security and comfort of their journeys.",
-  aboutOurVision: "Our Vision",
+  aboutOurVision: "Vision",
   aboutVisionText:
-    "To transform the ride-sharing industry by offering comprehensive, user-centered services that improve travel quality.",
-  aboutOurMission: "Our Mission",
+    "To transform the ride-sharing industry by offering comprehensive, user-centered services.",
+  aboutOurMission: "Mission",
   aboutMissionText:
-    "To provide professional, efficient, and secure ride-sharing services across a variety of transportation needs.",
+    "To provide professional, efficient, and secure ride-sharing services across various needs.",
+  
+  // NEW SECTION TEXT
+  galleryTitle: "The S-UPER Experience",
+  galleryDesc: "Discover how we make every journey effortless, from the moment you book until you reach your destination.",
+  
   aboutWhyChooseUs: "Why Choose Us",
-  aboutSafetyTitle: "Advanced Safety Features",
+  aboutSafetyTitle: "Advanced Safety",
   aboutSafetyDesc: "Real-time tracking and emergency assistance.",
   aboutDriversTitle: "Verified Drivers",
   aboutDriversDesc: "Thorough background checks and training.",
@@ -35,7 +40,16 @@ const aboutContent = {
   aboutFooter: "© 2026 S-UPER. All rights reserved.",
 };
 
-const containerVariants = {
+// --- NEW GALLERY IMAGES DATA ---
+const galleryItems = [
+  { id: 4, title: "Effortless Booking", desc: "One tap to ride" },
+  { id: 5, title: "Live Tracking", desc: "Know exactly when we arrive" },
+  { id: 6, title: "Premium Comfort", desc: "Relax in top-tier vehicles" },
+  { id: 7, title: "Cashless Payment", desc: "Quick and secure" },
+];
+
+// --- ANIMATION CONFIGURATION ---
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
@@ -43,173 +57,232 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#F8F9FA] via-white to-[#F3F7FF] text-slate-900">
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-16 px-6 py-10 lg:px-10 lg:py-16">
-        <motion.section
-          className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] items-center"
+    <div className="relative min-h-screen w-full bg-gray-50 text-gray-900 font-sans">
+      
+      {/* 1. HERO PARALLAX SECTION */}
+      <section className="relative w-full h-screen bg-[url('/header.jpeg')] bg-contain bg-center bg-no-repeat bg-fixed">
+        
+        {/* Floating Top Navigation */}
+        <div className="absolute top-0 left-0 w-full p-4 md:p-8 z-50">
+          <motion.header
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="flex justify-between items-center rounded-3xl bg-white/85 backdrop-blur-md border border-orange-100 px-6 py-4 shadow-md max-w-[1600px] mx-auto"
+          >
+            <div className="flex items-center gap-4">
+              {/* LOGO */}
+              <div className="relative h-12 w-32 overflow-hidden rounded-lg bg-white shadow-sm border border-orange-50">
+                <Image src="/logo.png" alt="Brand Logo" fill className="object-contain p-1" />
+              </div>
+            </div>
+
+            <nav className="hidden md:flex gap-8 font-bold text-gray-700">
+              <Link href="#about" className="hover:text-[#FF8C00] transition">About</Link>
+              <Link href="/privacy" className="hover:text-[#FF8C00] transition">Privacy Policy</Link>
+              <Link href="/terms" className="hover:text-[#FF8C00] transition">Terms of Service</Link>
+            </nav>
+
+            <div className="flex items-center">
+              <div className="relative h-12 w-12 overflow-hidden rounded-xl shadow-sm border border-orange-100 bg-white">
+                <Image src="/launcher.png" alt="S-UPER App" fill className="object-cover" />
+              </div>
+            </div>
+          </motion.header>
+        </div>
+
+        {/* Fades the bottom of the image nicely into the white content area */}
+        <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-gray-50 to-transparent"></div>
+      </section>
+
+      {/* 2. MAIN SCROLLING CONTENT */}
+      <section className="relative z-10 w-full max-w-[1600px] mx-auto px-4 md:px-8 pb-20 -mt-24 md:-mt-32">
+        
+        <motion.div 
+          className="bg-white rounded-[40px] shadow-2xl border-t border-orange-100 p-6 md:p-10 lg:p-14 flex flex-col gap-12"
           variants={containerVariants}
           initial="hidden"
           animate="show"
         >
-          <div className="space-y-6">
-            <motion.div variants={itemVariants} className="inline-flex items-center gap-3 rounded-full border border-orange-200 bg-orange-50 px-4 py-2 text-sm font-semibold uppercase tracking-[0.28em] text-[#D66E00] shadow-sm shadow-orange-100">
-              {aboutContent.section_about}
-            </motion.div>
-
-            <motion.div variants={itemVariants} className="space-y-4">
-              <div className="inline-flex items-center gap-3 rounded-full bg-[#FFE8D6] px-4 py-2 text-sm font-semibold text-[#AE5E0C] shadow-sm shadow-orange-100">
-                <div className="h-2.5 w-2.5 rounded-full bg-[#D66E00]" />
-                Premium Ride Experience
-              </div>
-
-              <div className="grid gap-4 rounded-[28px] border border-slate-200 bg-white px-4 py-4 shadow-sm shadow-slate-200 sm:grid-cols-[auto_1fr] sm:items-center">
-                <div className="flex h-20 w-20 items-center justify-center rounded-full border border-[#FF8C00]/25 bg-[#FFF5E8] shadow-inner shadow-orange-50">
-                  <Image src={launcherLogo} width={68} height={68} alt="Launcher logo" className="h-16 w-16 object-contain" />
+          {/* Top Info Grid */}
+          <div className="grid gap-8 lg:grid-cols-[1.3fr_1fr] items-center">
+            
+            {/* Left Column Text */}
+            <motion.div variants={itemVariants} className="flex flex-col gap-6">
+              <div className="flex flex-wrap items-center gap-3">
+                <div className="inline-flex items-center rounded-full bg-[#FF8C00] px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-white shadow-sm shadow-orange-200">
+                  {aboutContent.section_about}
                 </div>
-                <div>
-                  <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Premium brand</p>
-                  <p className="text-sm font-semibold text-slate-950">S-UPER</p>
+                <div className="inline-flex items-center gap-2 rounded-full bg-orange-50 border border-orange-100 px-4 py-1.5 text-sm font-semibold text-[#FF8C00] shadow-sm">
+                  <div className="h-2 w-2 rounded-full bg-[#FF8C00]" />
+                  Premium Ride Experience
                 </div>
               </div>
 
-              <p className="text-sm uppercase tracking-[0.3em] text-orange-500">{aboutContent.aboutUsTitle}</p>
-              <h1 className="text-4xl font-black tracking-tight text-slate-950 sm:text-5xl">
-                S-UPER Secure Drive
-              </h1>
+              <div className="flex items-center gap-4">
+                 <div className="relative h-16 w-16 overflow-hidden rounded-2xl bg-white border border-orange-100 shadow-sm p-1">
+                   <Image src="/launcher.png" alt="App Logo" fill className="object-cover rounded-xl" />
+                 </div>
+                 <div>
+                   <p className="text-xs uppercase tracking-[0.2em] text-[#FF8C00] font-bold">Premium Brand</p>
+                   <h1 className="text-3xl md:text-5xl font-black tracking-tight text-gray-900">
+                     S-UPER Secure Drive
+                   </h1>
+                 </div>
+              </div>
 
-              <p className="max-w-2xl text-lg leading-8 text-slate-600">
+              <p className="text-lg leading-relaxed text-gray-700 font-medium max-w-2xl">
                 {aboutContent.aboutIntro}
               </p>
+
+              <div className="grid sm:grid-cols-2 gap-4 mt-2">
+                <div className="rounded-3xl bg-gray-50 border border-orange-50 p-6 shadow-sm">
+                  <h2 className="text-lg font-bold text-gray-900">{aboutContent.aboutOurVision}</h2>
+                  <p className="mt-2 text-sm text-gray-600 leading-relaxed font-medium">{aboutContent.aboutVisionText}</p>
+                </div>
+                <div className="rounded-3xl bg-gray-50 border border-orange-50 p-6 shadow-sm">
+                  <h2 className="text-lg font-bold text-gray-900">{aboutContent.aboutOurMission}</h2>
+                  <p className="mt-2 text-sm text-gray-600 leading-relaxed font-medium">{aboutContent.aboutMissionText}</p>
+                </div>
+              </div>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="grid gap-4 sm:grid-cols-2">
-              <div className="rounded-3xl border border-slate-200 bg-white/90 p-6 shadow-[0_25px_70px_rgba(15,23,42,0.08)]">
-                <h2 className="text-lg font-semibold text-slate-950">{aboutContent.aboutOurVision}</h2>
-                <p className="mt-3 text-slate-600">{aboutContent.aboutVisionText}</p>
-              </div>
-              <div className="rounded-3xl border border-slate-200 bg-white/90 p-6 shadow-[0_25px_70px_rgba(15,23,42,0.08)]">
-                <h2 className="text-lg font-semibold text-slate-950">{aboutContent.aboutOurMission}</h2>
-                <p className="mt-3 text-slate-600">{aboutContent.aboutMissionText}</p>
-              </div>
-            </motion.div>
+            {/* Right Column Images */}
+            <motion.div variants={itemVariants} className="flex flex-col gap-6">
+                <div className="flex items-center gap-4 rounded-3xl bg-gray-50 border border-orange-100 p-4 shadow-sm">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#FF8C00] text-white shadow-md shadow-orange-200">
+                    <Route className="h-6 w-6" strokeWidth={2.5} />
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-gray-900">Secure Ride</p>
+                    <p className="text-sm text-gray-600 font-medium">Smart routing & easy booking</p>
+                  </div>
+                </div>
 
-            <motion.div variants={itemVariants} className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <Link href="/privacy" className="inline-flex items-center justify-center rounded-full bg-[#FF8C00] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-orange-200 transition hover:bg-[#e67600]">
-                View Privacy Policy
-              </Link>
-              <Link href="/terms" className="inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-6 py-3 text-sm font-semibold text-slate-800 transition hover:bg-slate-50">
-                Read Terms of Service
-              </Link>
+                <div className="relative rounded-3xl p-8 text-white shadow-lg overflow-hidden min-h-[220px] flex flex-col justify-end border border-orange-200">
+                  <Image src="/2.jpeg" alt="S-UPER Experience" fill className="object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#FF8C00]/95 via-[#FF8C00]/60 to-transparent"></div>
+                  <div className="relative z-10">
+                    <p className="text-xs uppercase tracking-widest text-orange-100 font-bold drop-shadow-md">S-UPER</p>
+                    <p className="text-2xl font-black drop-shadow-md mb-2 text-white">Secure Drive</p>
+                    <p className="text-sm leading-relaxed text-white/90 font-medium">
+                      Experience the new standard for premium transportation with strong safety.
+                    </p>
+                  </div>
+                </div>
             </motion.div>
           </div>
 
-          <motion.div variants={itemVariants} className="relative overflow-hidden rounded-[36px] border border-slate-200 bg-gradient-to-br from-[#FFFAF6] to-[#FFF1E6] px-6 py-8 shadow-[0_35px_120px_rgba(255,138,0,0.18)] sm:px-8">
-            <div className="absolute -right-16 -top-16 h-56 w-56 rounded-full bg-[#FFB85C]/20 blur-3xl" />
-            <div className="absolute -left-16 bottom-10 h-48 w-48 rounded-full bg-[#FF8C00]/15 blur-3xl" />
-            <div className="relative z-10 flex h-full flex-col gap-8">
-              <div className="flex items-center gap-3 rounded-3xl bg-white/90 px-4 py-3 shadow-sm shadow-slate-200">
-                <div className="flex h-14 w-14 items-center justify-center rounded-3xl bg-[#FF8C00] text-white shadow-md shadow-orange-200">
-                  <Route className="h-7 w-7" strokeWidth={2.2} />
-                </div>
-                <div>
-                  <p className="text-sm uppercase tracking-[0.24em] text-slate-500">Secure Ride</p>
-                  <p className="text-xl font-semibold text-slate-950">Smart routing & easy booking</p>
-                </div>
-              </div>
+          <hr className="border-orange-100 my-4" />
 
-              <div className="rounded-[32px] bg-slate-950 p-6 text-white shadow-[0_25px_60px_rgba(15,23,42,0.25)]">
-                <div className="flex items-center gap-4">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-3xl bg-[#FF8C00] text-2xl font-black text-slate-950">
-                    S
-                  </div>
-                  <div>
-                    <p className="text-sm uppercase tracking-[0.28em] text-orange-200">S-UPER</p>
-                    <p className="text-2xl font-black">Secure Drive</p>
+          {/* NEW SECTION: 4 Image Grid (4.jpeg - 7.jpeg) */}
+          <motion.div variants={itemVariants} className="flex flex-col gap-8 my-4">
+            <div className="text-center max-w-2xl mx-auto">
+              <h2 className="text-3xl font-black text-gray-900 mb-3">{aboutContent.galleryTitle}</h2>
+              <p className="text-gray-600 font-medium">{aboutContent.galleryDesc}</p>
+            </div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {galleryItems.map((item) => (
+                <div key={item.id} className="group relative h-[280px] rounded-3xl overflow-hidden shadow-sm border border-orange-100">
+                  {/* Background Image */}
+                  <Image 
+                    src={`/${item.id}.jpeg`} 
+                    alt={item.title} 
+                    fill 
+                    className="object-cover transition-transform duration-700 group-hover:scale-110" 
+                  />
+                  {/* Gradient Overlay for Text Readability */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent transition-opacity duration-500 group-hover:opacity-90"></div>
+                  
+                  {/* Text Content */}
+                  <div className="absolute inset-0 flex flex-col justify-end p-6 z-10">
+                    <h3 className="text-lg font-bold text-white mb-1 drop-shadow-md">{item.title}</h3>
+                    <p className="text-sm text-gray-200 font-medium drop-shadow-md">{item.desc}</p>
                   </div>
                 </div>
-                <p className="mt-6 max-w-xs text-sm leading-6 text-orange-100/90">
-                  Experience the new standard for premium transportation with strong safety, verified drivers, and transparent pricing.
+              ))}
+            </div>
+          </motion.div>
+
+          <hr className="border-orange-100 my-4" />
+
+          {/* Bottom Features Grid */}
+          <div className="grid lg:grid-cols-[1fr_1fr] gap-10">
+            <motion.div variants={itemVariants} className="flex flex-col gap-6">
+              <div>
+                <h2 className="text-3xl font-black text-gray-900 mb-2">{aboutContent.aboutWhyChooseUs}</h2>
+                <p className="text-gray-700 font-medium leading-relaxed">
+                  Our premium service pairs advanced technology with real people so every journey feels reliable, refined, and personal.
                 </p>
               </div>
+              <div className="relative w-full flex-grow min-h-[250px] rounded-3xl overflow-hidden shadow-md border border-orange-100">
+                <Image src="/3.jpeg" alt="Why Choose Us" fill className="object-cover" />
+              </div>
+            </motion.div>
 
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div className="rounded-[32px] bg-white/90 p-5 shadow-sm shadow-slate-200">
-                  <p className="text-sm uppercase tracking-[0.24em] text-slate-400">Fast Booking</p>
-                  <p className="mt-3 text-xl font-semibold text-slate-950">Instant ride matching</p>
+            <motion.div variants={itemVariants} className="grid sm:grid-cols-2 gap-4 place-content-center">
+              <div className="flex flex-col gap-3 rounded-3xl bg-gray-50 border border-orange-100 p-6 shadow-sm hover:border-[#FF8C00] transition-colors">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-50 text-[#FF8C00]">
+                  <ShieldCheck className="h-6 w-6" strokeWidth={2.5} />
                 </div>
-                <div className="rounded-[32px] bg-white/90 p-5 shadow-sm shadow-slate-200">
-                  <p className="text-sm uppercase tracking-[0.24em] text-slate-400">Trusted service</p>
-                  <p className="mt-3 text-xl font-semibold text-slate-950">Quality drivers every time</p>
+                <div>
+                  <h3 className="text-md font-bold text-gray-900">{aboutContent.aboutSafetyTitle}</h3>
+                  <p className="text-sm text-gray-600 mt-1 leading-snug font-medium">{aboutContent.aboutSafetyDesc}</p>
                 </div>
               </div>
-            </div>
-          </motion.div>
-        </motion.section>
 
-        <motion.section
-          className="rounded-[40px] border border-slate-200 bg-white/90 p-8 shadow-[0_30px_90px_rgba(15,23,42,0.08)]"
-          variants={containerVariants}
-          initial="hidden"
-          animate="show"
-        >
-          <motion.div variants={itemVariants} className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-            <div className="space-y-6">
-              <p className="text-sm uppercase tracking-[0.28em] text-orange-500">{aboutContent.aboutWhyChooseUs}</p>
-              <h2 className="text-3xl font-black text-slate-950 sm:text-4xl">The safer, smarter way to travel.</h2>
-              <p className="max-w-xl text-lg leading-8 text-slate-600">
-                Our premium service pairs advanced technology with real people so every journey feels reliable, refined, and personal.
-              </p>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-2">
-              <motion.div variants={itemVariants} className="rounded-[32px] border border-slate-200 bg-[#FFF7ED] p-6">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#FFE6CC] text-[#D97400]">
-                  <ShieldCheck className="h-6 w-6" strokeWidth={2.2} />
+              <div className="flex flex-col gap-3 rounded-3xl bg-gray-50 border border-orange-100 p-6 shadow-sm hover:border-[#FF8C00] transition-colors">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-50 text-[#FF8C00]">
+                  <UserCheck className="h-6 w-6" strokeWidth={2.5} />
                 </div>
-                <h3 className="mt-5 text-xl font-semibold text-slate-950">{aboutContent.aboutSafetyTitle}</h3>
-                <p className="mt-3 text-slate-600">{aboutContent.aboutSafetyDesc}</p>
-              </motion.div>
-
-              <motion.div variants={itemVariants} className="rounded-[32px] border border-slate-200 bg-[#F5F7FF] p-6">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#D5E4FF] text-[#1D4ED8]">
-                  <UserCheck className="h-6 w-6" strokeWidth={2.2} />
+                <div>
+                  <h3 className="text-md font-bold text-gray-900">{aboutContent.aboutDriversTitle}</h3>
+                  <p className="text-sm text-gray-600 mt-1 leading-snug font-medium">{aboutContent.aboutDriversDesc}</p>
                 </div>
-                <h3 className="mt-5 text-xl font-semibold text-slate-950">{aboutContent.aboutDriversTitle}</h3>
-                <p className="mt-3 text-slate-600">{aboutContent.aboutDriversDesc}</p>
-              </motion.div>
+              </div>
 
-              <motion.div variants={itemVariants} className="rounded-[32px] border border-slate-200 bg-[#ECFDF5] p-6">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#BBF7D0] text-[#047857]">
-                  <DollarSign className="h-6 w-6" strokeWidth={2.2} />
+              <div className="flex flex-col gap-3 rounded-3xl bg-gray-50 border border-orange-100 p-6 shadow-sm hover:border-[#FF8C00] transition-colors">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-50 text-[#FF8C00]">
+                  <DollarSign className="h-6 w-6" strokeWidth={2.5} />
                 </div>
-                <h3 className="mt-5 text-xl font-semibold text-slate-950">{aboutContent.aboutPricingTitle}</h3>
-                <p className="mt-3 text-slate-600">{aboutContent.aboutPricingDesc}</p>
-              </motion.div>
-
-              <motion.div variants={itemVariants} className="rounded-[32px] border border-slate-200 bg-[#F8FAFC] p-6">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#C7D2FE] text-[#4338CA]">
-                  <Headphones className="h-6 w-6" strokeWidth={2.2} />
+                <div>
+                  <h3 className="text-md font-bold text-gray-900">{aboutContent.aboutPricingTitle}</h3>
+                  <p className="text-sm text-gray-600 mt-1 leading-snug font-medium">{aboutContent.aboutPricingDesc}</p>
                 </div>
-                <h3 className="mt-5 text-xl font-semibold text-slate-950">{aboutContent.aboutSupportTitle}</h3>
-                <p className="mt-3 text-slate-600">{aboutContent.aboutSupportDesc}</p>
-              </motion.div>
-            </div>
-          </motion.div>
-        </motion.section>
+              </div>
 
-        <footer className="text-center text-sm text-slate-500">{aboutContent.aboutFooter}</footer>
-      </div>
+              <div className="flex flex-col gap-3 rounded-3xl bg-gray-50 border border-orange-100 p-6 shadow-sm hover:border-[#FF8C00] transition-colors">
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-50 text-[#FF8C00]">
+                  <Headphones className="h-6 w-6" strokeWidth={2.5} />
+                </div>
+                <div>
+                  <h3 className="text-md font-bold text-gray-900">{aboutContent.aboutSupportTitle}</h3>
+                  <p className="text-sm text-gray-600 mt-1 leading-snug font-medium">{aboutContent.aboutSupportDesc}</p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Footer App Links */}
+          <div className="mt-4 flex flex-col items-center gap-6 pt-4">
+            <p className="text-sm font-bold text-gray-400">{aboutContent.aboutFooter}</p>
+          </div>
+
+        </motion.div>
+      </section>
+
     </div>
   );
 }
