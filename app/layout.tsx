@@ -1,38 +1,27 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import "./globals.css"; // Keep your existing CSS import
+import { LanguageProvider } from "./LanguageContext"; // <-- Import the provider
 
 export const metadata: Metadata = {
-  title: "Super App",
-  description: "Secure Ride-Sharing Platform for Drivers and Users",
-  icons: {
-    icon: "/launcher.png",
-    shortcut: "/launcher.png",
-    apple: "/launcher.png",
-  },
+  title: "S-UPER | Secure Drive",
+  description: "Premium ride-sharing services for your comfort and security.",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    // Note: The 'lang' and 'dir' attributes will be automatically managed 
+    // by the LanguageContext on the client side.
+    <html lang="en">
+      <body>
+        {/* Wrap the children with the LanguageProvider */}
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
+      </body>
     </html>
   );
 }

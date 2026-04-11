@@ -1,29 +1,23 @@
+"use client";
+
 import LegalLayout from "../components/LegalLayout";
+import { useLanguage } from "../LanguageContext"; // Adjust path if needed
 
 export default function PrivacyPage() {
+  const { t } = useLanguage();
+
   return (
-    <LegalLayout title="Privacy Policy">
-      <p className="font-semibold text-gray-800">Effective Date: April 2026</p>
+    <LegalLayout title={t.navPrivacy}>
+      <p className="font-semibold text-gray-800">{t.effectiveDate}</p>
       
-      <h2 className="text-2xl font-bold text-[#1C1C1E] mt-8 mb-4">1. Data Collection</h2>
-      <p>
-        We collect your phone number strictly for authentication purposes via Firebase. 
-        Your profile information, such as your name and avatar, is used exclusively to facilitate 
-        a premium experience within the platform.
-      </p>
+      <h2 className="text-2xl font-bold text-[#1C1C1E] mt-8 mb-4">{t.privacyTitle1}</h2>
+      <p>{t.privacyDesc1}</p>
 
-      <h2 className="text-2xl font-bold text-[#1C1C1E] mt-8 mb-4">2. Location Data</h2>
-      <p>
-        For drivers and users, location data is used only while the app is active to facilitate 
-        rides and calculate distances accurately. We do not track your location in the background 
-        when the app is completely closed.
-      </p>
+      <h2 className="text-2xl font-bold text-[#1C1C1E] mt-8 mb-4">{t.privacyTitle2}</h2>
+      <p>{t.privacyDesc2}</p>
 
-      <h2 className="text-2xl font-bold text-[#1C1C1E] mt-8 mb-4">3. Data Protection</h2>
-      <p>
-        Your data is encrypted and securely stored. We value your privacy and absolutely do not 
-        sell your personal data, location history, or usage habits to third-party data brokers.
-      </p>
+      <h2 className="text-2xl font-bold text-[#1C1C1E] mt-8 mb-4">{t.privacyTitle3}</h2>
+      <p>{t.privacyDesc3}</p>
     </LegalLayout>
   );
 }

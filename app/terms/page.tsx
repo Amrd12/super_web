@@ -1,29 +1,23 @@
+"use client";
+
 import LegalLayout from "../components/LegalLayout";
+import { useLanguage } from "../LanguageContext"; // Adjust path if needed
 
 export default function TermsPage() {
+  const { t } = useLanguage();
+
   return (
-    <LegalLayout title="Terms of Service">
-      <p className="font-semibold text-gray-800">Effective Date: April 2026</p>
+    <LegalLayout title={t.navTerms}>
+      <p className="font-semibold text-gray-800">{t.effectiveDate}</p>
       
-      <h2 className="text-2xl font-bold text-[#1C1C1E] mt-8 mb-4">1. Acceptance of Terms</h2>
-      <p>
-        By creating an account and logging in via Phone Authentication, you agree to abide by 
-        these Terms of Service. If you do not agree with any part of these terms, you may not 
-        use our services.
-      </p>
+      <h2 className="text-2xl font-bold text-[#1C1C1E] mt-8 mb-4">{t.termsTitle1}</h2>
+      <p>{t.termsDesc1}</p>
 
-      <h2 className="text-2xl font-bold text-[#1C1C1E] mt-8 mb-4">2. User Conduct</h2>
-      <p>
-        You agree to use the platform respectfully and safely. Any fraudulent requests, harassment 
-        of drivers or passengers, or misuse of the rating system will result in immediate account termination.
-      </p>
+      <h2 className="text-2xl font-bold text-[#1C1C1E] mt-8 mb-4">{t.termsTitle2}</h2>
+      <p>{t.termsDesc2}</p>
 
-      <h2 className="text-2xl font-bold text-[#1C1C1E] mt-8 mb-4">3. Liability</h2>
-      <p>
-        Super App serves purely as a technological platform to connect independent users and drivers. 
-        While we enforce strict community guidelines, Super App is not legally liable for individual 
-        conduct, lost items, or incidents occurring during transit.
-      </p>
+      <h2 className="text-2xl font-bold text-[#1C1C1E] mt-8 mb-4">{t.termsTitle3}</h2>
+      <p>{t.termsDesc3}</p>
     </LegalLayout>
   );
 }
