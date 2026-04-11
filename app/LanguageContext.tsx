@@ -44,6 +44,9 @@ const translations = {
     aboutPricingDesc: "Transparent fare estimates and flexible payments.",
     aboutSupportTitle: "24/7 Support",
     aboutSupportDesc: "Dedicated service to assist with any queries.",
+    
+    dataTransparencyTitle: "Transparent Data Usage",
+    dataTransparencyDesc: "We only request the data essential for your ride. Your location is used for accurate routing, and your phone number is used strictly for secure authentication. We never sell your data.",
     aboutFooter: "© 2026 S-UPER. All rights reserved.",
 
     // Legal Pages
@@ -102,6 +105,9 @@ const translations = {
     aboutPricingDesc: "تقديرات شفافة للأسعار ومدفوعات مرنة.",
     aboutSupportTitle: "دعم على مدار الساعة",
     aboutSupportDesc: "خدمة مخصصة للمساعدة في أي استفسارات.",
+    
+    dataTransparencyTitle: "استخدام شفاف للبيانات",
+    dataTransparencyDesc: "نحن نطلب فقط البيانات الأساسية لرحلتك. يُستخدم موقعك لتحديد المسار بدقة، ويُستخدم رقم هاتفك حصرياً لتسجيل الدخول الآمن. نحن لا نبيع بياناتك أبداً.",
     aboutFooter: "© 2026 سوبر. جميع الحقوق محفوظة.",
 
     // Legal Pages

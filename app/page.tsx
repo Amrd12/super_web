@@ -45,7 +45,7 @@ export default function HomePage() {
       {/* 1. HERO PARALLAX SECTION */}
       <section className="relative w-full h-[100dvh] bg-[url('/1.jpeg')] md:bg-[url('/header.jpeg')] bg-cover bg-center bg-no-repeat md:bg-fixed">
         
-        {/* CHANGED: absolute -> fixed and z-50 -> z-[100] for sticky nav */}
+        {/* Sticky Nav Wrapper */}
         <div className="fixed top-0 left-0 w-full p-4 md:p-8 z-[100]">
           <motion.header
             initial={{ opacity: 0, y: -20 }}
@@ -170,7 +170,7 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                <div className="group relative rounded-3xl p-8 text-white shadow-xl shadow-[#FF8C00]/50 overflow-hidden min-h-[300px] flex flex-col justify-end border border-[#FF8C00]/30">
+                <div className="group relative rounded-3xl p-8 text-white shadow-xl shadow-[#FF8C00]/50 overflow-hidden min-h-[220px] flex flex-col justify-end border border-[#FF8C00]/30">
                   <Image src="/2.jpeg" alt="Experience" fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#FF8C00]/95 via-[#FF8C00]/60 to-transparent transition-opacity group-hover:opacity-90"></div>
                   <div className="relative z-10">
@@ -242,6 +242,26 @@ export default function HomePage() {
               ))}
             </motion.div>
           </div>
+
+          <hr className="border-[#FF8C00]/20 my-4" />
+
+          {/* DATA TRANSPARENCY BANNER (For Google App Verification) */}
+          <motion.div variants={itemVariants} className="bg-orange-50/50 border border-orange-100 rounded-3xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 shadow-sm">
+            <div className="flex h-14 w-14 items-center justify-center shrink-0 rounded-full bg-white text-[#FF8C00] shadow-md shadow-[#FF8C00]/20">
+              <ShieldCheck className="h-7 w-7" strokeWidth={2.5} />
+            </div>
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">{t.dataTransparencyTitle}</h3>
+              <p className="text-gray-700 font-medium leading-relaxed">
+                {t.dataTransparencyDesc}
+              </p>
+            </div>
+            <div className="md:ml-auto shrink-0 mt-4 md:mt-0">
+              <Link href="/privacy" className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#FF8C00] text-white font-bold shadow-lg shadow-[#FF8C00]/40 hover:bg-[#e67e00] transition-colors">
+                {t.navPrivacy}
+              </Link>
+            </div>
+          </motion.div>
 
           <div className="mt-4 flex flex-col items-center gap-6 pt-4 border-t border-gray-100">
             <p className="text-sm font-bold text-gray-400 tracking-wide" dir="ltr">{t.aboutFooter}</p>
