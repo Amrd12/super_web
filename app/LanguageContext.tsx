@@ -14,9 +14,14 @@ const translations = {
     // Home Page
     section_about: "ABOUT",
     aboutUsTitle: "About Us",
-    aboutIntro: "At S-UPER, we are committed to providing high-quality ride-sharing services to ensure that our users receive the best transportation in the security and comfort of their journeys.",
+    
+    // 🔴 ADDED EXPLICIT APP PURPOSE FOR GOOGLE VERIFICATION
+    appPurposeLabel: "App Purpose",
+    appPurpose: "Super is a ride-sharing application designed to connect passengers with verified professional drivers for secure, on-demand transportation services.",
+    
+    aboutIntro: "At Super, we are committed to providing high-quality ride-sharing services to ensure that our users receive the best transportation in the security and comfort of their journeys.",
     premiumBrand: "Premium Brand",
-    mainTitle: "S-UPER Secure Drive",
+    mainTitle: "Super Secure Drive",
     aboutOurVision: "Vision",
     aboutVisionText: "To transform the ride-sharing industry by offering comprehensive, user-centered services.",
     aboutOurMission: "Mission",
@@ -25,7 +30,7 @@ const translations = {
     smartRouting: "Smart routing & easy booking",
     experienceDesc: "Experience the new standard for premium transportation with strong safety.",
     
-    galleryTitle: "The S-UPER Experience",
+    galleryTitle: "The Super Experience",
     galleryDesc: "Discover how we make every journey effortless, from the moment you book until you reach your destination.",
     galleryItems: [
       { id: 4, title: "Effortless Booking", desc: "One tap to ride" },
@@ -44,7 +49,7 @@ const translations = {
     aboutPricingDesc: "Transparent fare estimates and flexible payments.",
     aboutSupportTitle: "24/7 Support",
     aboutSupportDesc: "Dedicated service to assist with any queries.",
-    aboutFooter: "© 2026 S-UPER. All rights reserved.",
+    aboutFooter: "© 2026 Super. All rights reserved.",
 
     // Legal Pages
     effectiveDate: "Effective Date: April 2026",
@@ -53,7 +58,7 @@ const translations = {
     termsTitle2: "2. User Conduct",
     termsDesc2: "You agree to use the platform respectfully and safely. Any fraudulent requests, harassment of drivers or passengers, or misuse of the rating system will result in immediate account termination.",
     termsTitle3: "3. Liability",
-    termsDesc3: "Super App serves purely as a technological platform to connect independent users and drivers. While we enforce strict community guidelines, Super App is not legally liable for individual conduct, lost items, or incidents occurring during transit.",
+    termsDesc3: "Super serves purely as a technological platform to connect independent users and drivers. While we enforce strict community guidelines, Super is not legally liable for individual conduct, lost items, or incidents occurring during transit.",
     
     privacyTitle1: "1. Data Collection",
     privacyDesc1: "We collect your phone number strictly for authentication purposes via Firebase. Your profile information, such as your name and avatar, is used exclusively to facilitate a premium experience within the platform.",
@@ -72,6 +77,11 @@ const translations = {
     // Home Page
     section_about: "حول",
     aboutUsTitle: "من نحن",
+    
+    // 🔴 ADDED EXPLICIT APP PURPOSE FOR GOOGLE VERIFICATION
+    appPurposeLabel: "الهدف من التطبيق",
+    appPurpose: "سوبر هو تطبيق للنقل التشاركي يهدف إلى ربط الركاب بسائقين محترفين ومعتمدين لتقديم خدمات نقل آمنة ومريحة عند الطلب.",
+    
     aboutIntro: "في سوبر، نحن ملتزمون بتقديم خدمات نقل تشاركي عالية الجودة لضمان حصول مستخدمينا على أفضل وسيلة نقل بأمان وراحة في رحلاتهم.",
     premiumBrand: "علامة تجارية مميزة",
     mainTitle: "سوبر للقيادة الآمنة",

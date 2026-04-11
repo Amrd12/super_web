@@ -13,18 +13,16 @@ import {
   Menu,
   X,
   Globe,
+  Info
 } from "lucide-react";
-// UPDATE THIS PATH if your LanguageContext is in a different folder
 import { useLanguage } from "./LanguageContext"; 
 
-// --- TYPESCRIPT INTERFACE FOR GALLERY ITEM ---
 interface GalleryItem {
   id: number;
   title: string;
   desc: string;
 }
 
-// --- ANIMATION CONFIGURATION ---
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
   show: { opacity: 1, transition: { staggerChildren: 0.15 } },
@@ -54,7 +52,7 @@ export default function HomePage() {
           >
             <div className="flex items-center gap-4">
               <div className="relative h-10 w-28 md:h-12 md:w-32 overflow-hidden rounded-lg bg-white shadow-sm border border-orange-50">
-                <Image src="/logo.png" alt="Brand Logo" fill className="object-contain p-1" />
+                <Image src="/logo.png" alt="Super Logo" fill className="object-contain p-1" />
               </div>
             </div>
 
@@ -73,7 +71,7 @@ export default function HomePage() {
 
             <div className="flex items-center gap-4">
               <div className="relative h-10 w-10 md:h-12 md:w-12 overflow-hidden rounded-xl shadow-sm border border-orange-100 bg-white">
-                <Image src="/launcher.png" alt="S-UPER App" fill className="object-cover" />
+                <Image src="/launcher.png" alt="Super App" fill className="object-cover" />
               </div>
               
               {/* Mobile Menu Toggle */}
@@ -121,7 +119,7 @@ export default function HomePage() {
           initial="hidden"
           animate="show"
         >
-          <div className="grid gap-8 lg:grid-cols-[1.3fr_1fr] items-center">
+          <div className="grid gap-8 lg:grid-cols-[1.3fr_1fr] items-start">
             <motion.div variants={itemVariants} className="flex flex-col gap-6">
               <div className="flex flex-wrap items-center gap-3">
                 <div className="inline-flex items-center rounded-full bg-[#FF8C00] px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-white shadow-sm shadow-orange-200">
@@ -143,6 +141,17 @@ export default function HomePage() {
                      {t.mainTitle}
                    </h1>
                  </div>
+              </div>
+
+              {/* 🔴 EXPLICIT APP PURPOSE BOX FOR GOOGLE VERIFICATION */}
+              <div className="bg-blue-50 border border-blue-100 rounded-2xl p-5 flex items-start gap-4">
+                <Info className="text-blue-500 shrink-0 mt-0.5" size={24} />
+                <div>
+                  <h3 className="font-bold text-blue-900 mb-1">{t.appPurposeLabel}</h3>
+                  <p className="text-blue-800 text-sm leading-relaxed font-medium">
+                    {t.appPurpose}
+                  </p>
+                </div>
               </div>
 
               <p className="text-lg leading-relaxed text-gray-700 font-medium max-w-2xl">
@@ -176,7 +185,7 @@ export default function HomePage() {
                   <Image src="/2.jpeg" alt="Experience" fill className="object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#FF8C00]/95 via-[#FF8C00]/60 to-transparent"></div>
                   <div className="relative z-10">
-                    <p className="text-xs uppercase tracking-widest text-orange-100 font-bold drop-shadow-md">S-UPER</p>
+                    <p className="text-xs uppercase tracking-widest text-orange-100 font-bold drop-shadow-md">Super</p>
                     <p className="text-2xl font-black drop-shadow-md mb-2 text-white">{t.mainTitle}</p>
                     <p className="text-sm leading-relaxed text-white/90 font-medium">
                       {t.experienceDesc}
@@ -196,7 +205,6 @@ export default function HomePage() {
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {/* FIXED TYPESCRIPT ERROR HERE */}
               {t.galleryItems.map((item: GalleryItem) => (
                 <div key={item.id} className="group relative h-[280px] rounded-3xl overflow-hidden shadow-sm border border-orange-100">
                   <Image src={`/${item.id}.jpeg`} alt={item.title} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
